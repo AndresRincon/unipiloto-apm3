@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="yourSelft">
+<head>
+	<title>Ejemplo Tu Solito</title>
+	<meta charset="utf-8" />
+	<script type="text/javascript" src="../assets/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../assets/angular.min.js"></script>
+	<script type="text/javascript" src="../assets/angular-route.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div ng-include src=" 'includes/header.html' "></div>
+	    <div ng-include src=" 'includes/menu.html' "></div>
+
+	    <div ng-view></div>
+	</div>
+    <script type="text/javascript">
+    angular.module('yourSelft', ['ngRoute'])
+    	.config(['$routeProvider', function($routeProvider){
+
+            /*
+             * `when()` cuantas veces sea necesario
+             * `otherwise()` una sola vez "OJO"
+            */
+            $routeProvider
+            .when('/contact', {
+                templateUrl : "contact.html"
+            })
+            .when('/about', 
+            {
+                templateUrl: "about.html"
+            })
+            .otherwise({
+                redirectTo: '/',
+                templateUrl: 'otherwise.html'
+            });
+
+            }])
+    </script>
+
+</body>
+</html>
