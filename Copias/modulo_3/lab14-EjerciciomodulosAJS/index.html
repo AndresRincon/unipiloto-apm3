@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="lab14"> <!--NOMBRE DEL MODULO-->
+<head>
+	<title>AngularJS First Application</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<div ng-controller="lab14controller"> <!--ng-controller maneja el controlador de MVC-->
+		<div ng-show="revealDiv"> <!-- ng-show crea un modelo revealdiv que recibe true o false -->
+			<h1>Este es el texto que vamos a ocultar</h1>
+		</div>
+
+		<button ng-click="controlButton()" ng-show="revealButton">Ocultar Texto</button>
+		<button ng-click="controlText()" ng-show="revealText">Mostrar Texto</button>
+	</div>
+	<script type="text/javascript" src="../assets/angular.min.js"></script>
+
+	<script type="text/javascript">
+
+	angular.module('lab14', [])
+		   .controller('lab14controller', function($scope){
+		   		$scope.revealDiv = true;
+		   		$scope.revealButton = true;
+		   		$scope.revealText = false;
+
+		   		$scope.controlButton = function(){
+		   			$scope.revealDiv = false;
+		   			$scope.revealButton = false;
+		   				$scope.revealText = true;
+		   		};
+		   		
+		   		$scope.controlText = function(){
+		   			$scope.revealDiv = true;
+		   			$scope.revealButton = true;
+		   				$scope.revealText = false;
+		   		};
+
+		   });
+	</script>
+
+
+</body>
+</html>
